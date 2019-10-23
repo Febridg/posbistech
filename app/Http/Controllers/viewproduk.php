@@ -26,6 +26,40 @@ class viewproduk extends Controller
         $kategoriproduk = M_kategoriproduk::all();
         return view('master.produk.tambahproduk',['kategoriproduk' => $kategoriproduk]);
     }
-
+    
+    public function aksitambahproduk(Request $request)
+    {
+        $file = $request->file('gambar1');
+        if (empty($file)) {
+            $gambar1 = '0';
+        }else {
+            $gambar1 = $file->getClientOriginalName();
+            
+            $lokasi = 'gallery';
+            $file->move($lokasi,$file->getClientOriginalName());
+        }
+        
+        $file = $request->file('gambar2');
+        if (empty($file)) {
+            $gambar2 = '0';
+        }else {
+            $gambar2 = $file->getClientOriginalName();
+            
+            $lokasi = 'gallery';
+            $file->move($lokasi,$file->getClientOriginalName());
+        }
+        
+        $file = $request->file('gambar3');
+        if (empty($file)) {
+            $gambar3 = '0';
+        }else {
+            $gambar3 = $file->getClientOriginalName();
+            
+            $lokasi = 'gallery';
+            $file->move($lokasi,$file->getClientOriginalName());
+        }
+        
+        
+    }
     
 }
