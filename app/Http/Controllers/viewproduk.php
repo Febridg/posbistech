@@ -29,13 +29,16 @@ class viewproduk extends Controller
     
     public function aksitambahproduk(Request $request)
     {
+        $iduser = Session::get('iduser');
+        $tag = str_replace(" ","-",$request->nama);
+        
         $file = $request->file('gambar1');
         if (empty($file)) {
             $gambar1 = '0';
         }else {
             $gambar1 = $file->getClientOriginalName();
             
-            $lokasi = 'gallery';
+            $lokasi = 'image';
             $file->move($lokasi,$file->getClientOriginalName());
         }
         
@@ -45,7 +48,7 @@ class viewproduk extends Controller
         }else {
             $gambar2 = $file->getClientOriginalName();
             
-            $lokasi = 'gallery';
+            $lokasi = 'image';
             $file->move($lokasi,$file->getClientOriginalName());
         }
         
@@ -55,11 +58,26 @@ class viewproduk extends Controller
         }else {
             $gambar3 = $file->getClientOriginalName();
             
-            $lokasi = 'gallery';
+            $lokasi = 'image';
             $file->move($lokasi,$file->getClientOriginalName());
         }
         
+        M_produk::create([
+    		'm_user_id' => $iduser,
+            'nama' => $request->nama,
+            'tag' => $tag,
+            'deskripsi' => $request->deskripsi,
+            'm_kategoriproduk_id' => $request->kategori,
+            'harga' => $request->harga,
+            'stock' => $request->stock,
+            'promo' => $request->promo,
+            'gambar_satu' => $gambar1,
+            'gambar_dua' => $gambar2,
+            'gambar_tiga' => $gambar3,
+            'aktif' => $request->aktif
+        ]);
         
+        return redirect( env('APP_URL').'/produk/tambahproduk')->with('statusprod','Data Produk berhasil ditambahkan');
     }
     
 }

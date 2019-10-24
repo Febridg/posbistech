@@ -98,7 +98,8 @@
                                     <div class="col-md-6 col-lg-12">
                                         <div class="form-group">
                                             <label for="email2">Deskripsi </label>
-                                            <textarea class="form-control" id="deskripsi" rows="5"></textarea>
+                                            <textarea class="form-control" name="deskripsi" id="deskripsi"
+                                                rows="5"></textarea>
                                         </div>
                                     </div>
                                 </div>
