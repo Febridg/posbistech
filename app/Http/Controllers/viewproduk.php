@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use DB;
+
 use Session;
 
 use Illuminate\Http\Request;
@@ -16,7 +18,9 @@ class viewproduk extends Controller
 {
     public function listproduk()
     {
-        $produk = M_produk::where('m_user_id',Session::get('iduser'));
+
+        $iduser = Session::get('iduser');
+        $produk = M_produk::where('m_user_id',$iduser)->get();
 
         return view('master.produk.listproduk',['produk' => $produk]);
     }
@@ -32,34 +36,34 @@ class viewproduk extends Controller
         $iduser = Session::get('iduser');
         $tag = str_replace(" ","-",$request->nama);
         
-        $file = $request->file('gambar1');
-        if (empty($file)) {
+        $filesatu = $request->file('gambar1');
+        if (empty($filesatu)) {
             $gambar1 = '0';
         }else {
-            $gambar1 = $file->getClientOriginalName();
+            $gambar1 = $filesatu->getClientOriginalName();
             
             $lokasi = 'image';
-            $file->move($lokasi,$file->getClientOriginalName());
+            $filesatu->move($lokasi,$filesatu->getClientOriginalName());
         }
         
-        $file = $request->file('gambar2');
-        if (empty($file)) {
+        $filedua = $request->file('gambar2');
+        if (empty($filedua)) {
             $gambar2 = '0';
         }else {
-            $gambar2 = $file->getClientOriginalName();
+            $gambar2 = $filedua->getClientOriginalName();
             
             $lokasi = 'image';
-            $file->move($lokasi,$file->getClientOriginalName());
+            $filedua->move($lokasi,$filedua->getClientOriginalName());
         }
         
-        $file = $request->file('gambar3');
-        if (empty($file)) {
+        $filetiga = $request->file('gambar3');
+        if (empty($filetiga)) {
             $gambar3 = '0';
         }else {
-            $gambar3 = $file->getClientOriginalName();
+            $gambar3 = $filetiga->getClientOriginalName();
             
             $lokasi = 'image';
-            $file->move($lokasi,$file->getClientOriginalName());
+            $filetiga->move($lokasi,$filetiga->getClientOriginalName());
         }
         
         M_produk::create([

@@ -40,7 +40,8 @@
                             {{ session('statusprod') }}
                         </div>
                         @endif
-                        <form method="post" action="{{ env('APP_URL') }}/produk/aksitambahproduk">
+                        <form method="post" action="{{ env('APP_URL') }}/produk/aksitambahproduk"
+                            enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <div class="card-header">
                                 <h4 class="card-title">Tambah Produk</h4>

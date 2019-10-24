@@ -10,6 +10,6 @@ class M_produk extends Model
 
     public function m_kategoriproduks()
     {
-        return $this->belongsTo('App\M_kategoriproduks','m_kategoriproduk_id');
+        return $this->belongsTo('App\M_kategoriproduk','m_kategoriproduk_id');
     }
 }

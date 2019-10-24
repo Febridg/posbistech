@@ -62,13 +62,13 @@
                                             <td>{{ $p->stock }}</td>
                                             <td>
                                                 <div class="form-button-action">
-                                                    <a href="{{ env('APP_URL') }}/produk/editproduk/{{ $kp->id }}"
+                                                    <a href="{{ env('APP_URL') }}/produk/editproduk/{{ $p->id }}"
                                                         data-toggle="tooltip" title=""
                                                         class="btn btn-link btn-primary btn-lg"
                                                         data-original-title="Edit Task">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
-                                                    <a href="{{ env('APP_URL') }}/produk/deleteproduk/{{ $kp->id }}"
+                                                    <a href="{{ env('APP_URL') }}/produk/deleteproduk/{{ $p->id }}"
                                                         data-toggle="tooltip" title="" class="btn btn-link btn-danger"
                                                         data-original-title="Remove">
                                                         <i class="fa fa-times"></i>
