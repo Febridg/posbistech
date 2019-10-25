@@ -6,6 +6,8 @@ use DB;
 
 use Session;
 
+use Illuminate\Support\Facades\File;
+
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -92,4 +94,60 @@ class viewproduk extends Controller
         return view('master.produk.editproduk',['kategoriproduk' => $kategoriproduk,'produk' => $produk]);
     }
     
+    public function aksieditproduk($id,Request $request)
+    {
+        $tag = str_replace(" ","-",$request->nama);
+        
+        $filesatu = $request->file('gambar1');
+        if (empty($filesatu)) {
+            $gambar1 = $request->defaultgambar1;
+        }else {
+            File::delete('image/' . "$request->defaultgambar1");
+
+            $gambar1 = $filesatu->getClientOriginalName();
+            
+            $lokasi = 'image';
+            $filesatu->move($lokasi,$filesatu->getClientOriginalName());
+        }
+        
+        $filedua = $request->file('gambar2');
+        if (empty($filedua)) {
+            $gambar2 = $request->defaultgambar2;
+        }else {
+            File::delete('image/' . "$request->defaultgambar2");
+
+            $gambar2 = $filedua->getClientOriginalName();
+            
+            $lokasi = 'image';
+            $filedua->move($lokasi,$filedua->getClientOriginalName());
+        }
+        
+        $filetiga = $request->file('gambar3');
+        if (empty($filetiga)) {
+            $gambar3 = $request->defaultgambar3;
+        }else {
+            File::delete('image/' . "$request->defaultgambar3");
+
+            $gambar3 = $filetiga->getClientOriginalName();
+            
+            $lokasi = 'image';
+            $filetiga->move($lokasi,$filetiga->getClientOriginalName());
+        }
+
+        $produk = M_produk::find($id);
+        $produk->nama = $request->nama;
+        $produk->tag = $tag;
+        $produk->deskripsi = $request->deskripsi;
+        $produk->m_kategoriproduk_id = $request->kategori;
+        $produk->harga = $request->harga;
+        $produk->stock = $request->stock;
+        $produk->promo = $request->promo;
+        $produk->gambar_satu = $gambar1;
+        $produk->gambar_dua = $gambar2;
+        $produk->gambar_tiga = $gambar3;
+        $produk->aktif = $request->aktif;
+        $produk->save();
+
+        return redirect( env('APP_URL').'/produk/editproduk/'.$id)->with('statusprod','Data Produk berhasil diedit');
+    }
 }

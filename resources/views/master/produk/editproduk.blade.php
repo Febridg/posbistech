@@ -47,9 +47,9 @@
                                 <h4 class="card-title">Tambah Produk</h4>
                             </div>
                             <div class="card-body">
-                                <input type="hidden" name="defaultgambar1" value="{{ $produk->gambar1 }}">
-                                <input type="hidden" name="defaultgambar2" value="{{ $produk->gambar2 }}">
-                                <input type="hidden" name="defaultgambar3" value="{{ $produk->gambar3 }}">
+                                <input type="hidden" name="defaultgambar1" value="{{ $produk->gambar_satu }}">
+                                <input type="hidden" name="defaultgambar2" value="{{ $produk->gambar_dua }}">
+                                <input type="hidden" name="defaultgambar3" value="{{ $produk->gambar_tiga }}">
                                 <div class="row">
                                     <div class="col-md-6 col-lg-12">
                                         <div class="form-group">
