@@ -84,4 +84,12 @@ class viewproduk extends Controller
         return redirect( env('APP_URL').'/produk/tambahproduk')->with('statusprod','Data Produk berhasil ditambahkan');
     }
     
+    public function editproduk($id)
+    {
+        $kategoriproduk = M_kategoriproduk::all();
+        $produk = M_produk::where('id',$id)->first();
+        
+        return view('master.produk.editproduk',['kategoriproduk' => $kategoriproduk,'produk' => $produk]);
+    }
+    
 }
