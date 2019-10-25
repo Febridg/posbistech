@@ -55,5 +55,6 @@ Route::get('/kategoriproduk/deletekategoriproduk/{id}', 'viewkategoriproduk@dele
 Route::get('/produk', 'viewproduk@listproduk');
 Route::get('/produk/tambahproduk', 'viewproduk@tambahproduk');
 Route::post('/produk/aksitambahproduk', 'viewproduk@aksitambahproduk');
+Route::get('/produk/editproduk/{id}','viewproduk@editproduk');
 
 Route::auth();
