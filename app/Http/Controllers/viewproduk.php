@@ -150,4 +150,14 @@ class viewproduk extends Controller
 
         return redirect( env('APP_URL').'/produk/editproduk/'.$id)->with('statusprod','Data Produk berhasil diedit');
     }
+    
+    public function deleteproduk($id)
+    {
+        $produk = M_produk::find($id);
+        $produk->delete();
+        
+        $iduser = Session::get('iduser');
+        $produk = M_produk::where('m_user_id',$iduser)->get();
+        return view('master.produk.listproduk',['produk' => $produk]);
+    }
 }
