@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Session;
+
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -12,7 +14,8 @@ class viewkategoriproduk extends Controller
 {
     public function listkategoriproduk()
     {
-        $kategoriproduk = M_kategoriproduk::all();
+        $iduser = Session::get('iduser');
+        $kategoriproduk = M_kategoriproduk::where('m_user_id',$iduser)->get();
 
         return view('master.kategoriproduk.listkategoriproduk',['kategoriproduk' => $kategoriproduk]);
     }
@@ -27,7 +30,10 @@ class viewkategoriproduk extends Controller
         if (empty($request->nama)) {
             return redirect( env('APP_URL').'/kategoriproduk/tambahkategoriproduk')->with('statuskategoriprod','Kolom nama belum terisi');
         }else {
+            $iduser = Session::get('iduser');
+            
             M_kategoriproduk::create([
+                'm_user_id' => $iduser,
                 'nama' => $request->nama
             ]);
     
@@ -60,7 +66,8 @@ class viewkategoriproduk extends Controller
         $kategoriproduk = M_kategoriproduk::find($id);
         $kategoriproduk->delete();
 
-        $kategoriproduk = M_kategoriproduk::all();
+        $iduser = Session::get('iduser');
+        $kategoriproduk = M_kategoriproduk::where('m_user_id',$iduser)->get();
 
         return view('master.kategoriproduk.listkategoriproduk',['kategoriproduk' => $kategoriproduk]);
     }
