@@ -20,4 +20,9 @@ class viewsupplier extends Controller
 
         return view('master.supplier.listsupplier',['supplier' => $supplier]);
     }
+
+    public function tambahsupplier()
+    {
+        return view('master.supplier.tambahsupplier');
+    }
 }

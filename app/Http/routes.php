@@ -64,5 +64,6 @@ Route::get('/pengiriman', 'viewpengiriman@listpengiriman');
 
 //supplier
 Route::get('/supplier', 'viewsupplier@listsupplier');
+Route::get('/supplier/tambahsupplier', 'viewsupplier@tambahsupplier');
 
 Route::auth();
