@@ -59,7 +59,7 @@ Route::get('/produk/editproduk/{id}','viewproduk@editproduk');
 Route::post('/produk/aksieditproduk/{id}', 'viewproduk@aksieditproduk');
 Route::get('/produk/deleteproduk/{id}', 'viewproduk@deleteproduk');
 
-//kurir
-Route::get('/kurir', 'viewkurir@listkurir');
+//pengiriman
+Route::get('/pengiriman', 'viewpengiriman@listpengiriman');
 
 Route::auth();
