@@ -62,4 +62,7 @@ Route::get('/produk/deleteproduk/{id}', 'viewproduk@deleteproduk');
 //pengiriman
 Route::get('/pengiriman', 'viewpengiriman@listpengiriman');
 
+//supplier
+Route::get('/supplier', 'viewsupplier@listsupplier');
+
 Route::auth();
