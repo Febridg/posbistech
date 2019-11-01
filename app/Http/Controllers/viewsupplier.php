@@ -61,4 +61,44 @@ class viewsupplier extends Controller
 
         return view('master.supplier.editsupplier',['supplier' => $supplier]);
     }
+
+    public function aksieditsupplier($id,Request $request)
+    {
+        if (empty($request->nama)) {
+            $pesan .= "Nama Supplier,";
+        }
+
+        if (empty($request->alamat)) {
+            $pesan .= "Alamat,";
+        }
+
+        if (empty($request->no_tlp)) {
+            $pesan .= "Nomer Telepon,";
+        }
+
+        if (empty($request->nama) || empty($request->alamat) || empty($request->no_tlp)) {
+            return redirect( env('APP_URL').'/supplier/editsupplier/'.$id)->with('statussupplier','Kolom '. $pesan .' belum terisi');
+        }else {
+            $supplier = M_supplier::find($id);
+            $supplier->nama = $request->nama;
+            $supplier->alamat = $request->alamat;
+            $supplier->no_tlp = $request->no_tlp;
+            $supplier->email = $request->email;
+            $supplier->keterangan = $request->keterangan;
+            $supplier->save();
+    
+            return redirect( env('APP_URL').'/supplier/editsupplier/'.$id)->with('statussupplier','Data Supplier berhasil diedit');
+        }
+    }
+
+    public function deletesupplier($id)
+    {
+        $supplier = M_supplier::find($id);
+        $supplier->delete();
+
+        $iduser = Session::get('iduser');
+        $supplier = M_supplier::where('m_user_id',$iduser)->get();
+
+        return view('master.supplier.listsupplier',['supplier' => $supplier]);
+    }
 }

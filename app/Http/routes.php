@@ -67,5 +67,7 @@ Route::get('/supplier', 'viewsupplier@listsupplier');
 Route::get('/supplier/tambahsupplier', 'viewsupplier@tambahsupplier');
 Route::post('/supplier/aksitambahsupplier', 'viewsupplier@aksitambahsupplier');
 Route::get('/supplier/editsupplier/{id}','viewsupplier@editsupplier');
+Route::post('/supplier/aksieditsupplier/{id}', 'viewsupplier@aksieditsupplier');
+Route::get('/supplier/deletesupplier/{id}', 'viewsupplier@deletesupplier');
 
 Route::auth();
