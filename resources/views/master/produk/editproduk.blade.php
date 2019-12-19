@@ -44,7 +44,7 @@
                             enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <div class="card-header">
-                                <h4 class="card-title">Tambah Produk</h4>
+                                <h4 class="card-title">Edit Produk</h4>
                             </div>
                             <div class="card-body">
                                 <input type="hidden" name="defaultgambar1" value="{{ $produk->gambar_satu }}">
@@ -56,6 +56,15 @@
                                             <label for="email2">Nama </label>
                                             <input type="text" class="form-control" name="nama" id="nama"
                                                 placeholder="Nama " value="{{ $produk->nama }}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-12">
+                                        <div class="form-group">
+                                            <label for="email2">Nomer </label>
+                                            <input type="text" class="form-control" name="nomer" id="nomer"
+                                                placeholder="Nomer " value="{{ $produk->nomer }}">
                                         </div>
                                     </div>
                                 </div>

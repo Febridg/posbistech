@@ -71,6 +71,7 @@ class viewproduk extends Controller
         M_produk::create([
     		'm_user_id' => $iduser,
             'nama' => $request->nama,
+            'nomer' => $request->nomer,
             'tag' => $tag,
             'deskripsi' => $request->deskripsi,
             'm_kategoriproduk_id' => $request->kategori,
@@ -136,6 +137,7 @@ class viewproduk extends Controller
 
         $produk = M_produk::find($id);
         $produk->nama = $request->nama;
+        $produk->nomer = $request->nomer;
         $produk->tag = $tag;
         $produk->deskripsi = $request->deskripsi;
         $produk->m_kategoriproduk_id = $request->kategori;

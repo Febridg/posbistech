@@ -70,4 +70,12 @@ Route::get('/supplier/editsupplier/{id}','viewsupplier@editsupplier');
 Route::post('/supplier/aksieditsupplier/{id}', 'viewsupplier@aksieditsupplier');
 Route::get('/supplier/deletesupplier/{id}', 'viewsupplier@deletesupplier');
 
+//bank
+Route::get('/bank', 'viewbank@listbank');
+Route::get('/bank/tambahbank', 'viewbank@tambahbank');
+Route::post('/bank/aksitambahbank', 'viewbank@aksitambahbank');
+Route::get('/bank/editbank/{id}','viewbank@editbank');
+Route::post('/bank/aksieditbank/{id}', 'viewbank@aksieditbank');
+Route::get('/bank/deletebank/{id}', 'viewbank@deletebank');
+
 Route::auth();

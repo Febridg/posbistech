@@ -59,6 +59,15 @@
                                 <div class="row">
                                     <div class="col-md-6 col-lg-12">
                                         <div class="form-group">
+                                            <label for="email2">Nomer </label>
+                                            <input type="text" class="form-control" name="nomer" id="nomer"
+                                                placeholder="Nomer ">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-12">
+                                        <div class="form-group">
                                             <label for="email2">Kategori Produk </label>
                                             <select class="form-control" name="kategori" id="Kategori">
                                                 @foreach($kategoriproduk as $kp)
